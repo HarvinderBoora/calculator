@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simple Calculator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f4f4f9;
+    }
+
+    .calculator {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      width: 300px;
+      padding: 20px;
+    }
+
+    #calculator-screen {
+      width: auto;
+      height: 50px;
+      font-size: 1.5em;
+      text-align: right;
+      border: none;
+      background-color: #f3f3f3;
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 5px;
+    }
+
+    .calculator-keys {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+    }
+
+    button {
+      height: 50px;
+      font-size: 1.2em;
+      background: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+
+    }
+
+    button:hover {
+      background: #0056b3;
+    }
+
+    button.operator {
+      background: #28a745;
+    }
+
+    button.operator:hover {
+      background: #1e7e34;
+    }
+
+    button.clear {
+      background: #dc3545;
+    }
+
+    button.clear:hover {
+      background: #a71d2a;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="calculator">
+    <input type="text" id="calculator-screen" readonly />
+    <div class="calculator-keys">
+      <button type="button" class="operator" value="+">+</button>
+      <button type="button" class="operator" value="-">-</button>
+      <button type="button" class="operator" value="*">*</button>
+      <button type="button" class="operator" value="/">÷</button>
+
+      <button type="button" value="7">7</button>
+      <button type="button" value="8">8</button>
+      <button type="button" value="9">9</button>
+      <button type="button" class="clear" value="clear">C</button>
+
+      <button type="button" value="4">4</button>
+      <button type="button" value="5">5</button>
+      <button type="button" value="6">6</button>
+      <button type="button" id="eql" value="=">=</button>
+
+      <button type="button" value="1">1</button>
+      <button type="button" value="2">2</button>
+      <button type="button" value="3">3</button>
+
+      <button type="button" value="0" style="grid-column: span 2;">0</button>
+      <button type="button" value=".">.</button>
+    </div>
+  </div>
+
+  <script>
+    let int = document.getElementById("calculator-screen");
+    let btn = document.querySelectorAll("button");
+    let eql = document.getElementById("eql");
+    let cl = document.getElementsByClassName("clear");
+    let x = "";
+
+
+    let arr = Array.from(btn);
+
+
+
+    //  for(let i = 0; i< arr1.length; i++){
+    //     console.log(arr1[i]);
+
+    //  }
+    btn.forEach((it) => {
+      it.addEventListener("click", function (e) {
+        debugger
+        if (e.target.value == "clear") {
+          x = '';
+          int.value = x;
+        }
+        else if (e.target.value === "=") {
+
+          x = eval(x);
+          int.value = x;
+        }
+        else {
+          let y = e.target.innerHTML;
+          x += y;
+
+          int.value = x;
+        }
+
+
+      })
+    })
+
+
+      ;
+
+
+
+
+
+
+  </script>
+
+</body>
+
+</html>
